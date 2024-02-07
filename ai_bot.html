@@ -1,0 +1,163 @@
+<!-- ai_bot.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalEase AI Bot</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Light gray background */
+            color: #333;
+        }
+
+        header {
+            background-color: #3f51b5; /* Indigo */
+            color: white;
+            padding: 1em;
+            text-align: center;
+            border-bottom: 4px solid #303f9f; /* Darker indigo */
+        }
+
+        main {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff; /* White */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        .chat-box {
+            height: 300px;
+            overflow-y: scroll;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9; /* Lighter gray for chat box background */
+        }
+
+        .user-input {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .user-input input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .user-input button {
+            background-color: #4caf50; /* Green */
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+
+        .bot-message {
+            background-color: #e0e0e0; /* Lighter gray for bot messages */
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>LegalEase AI Bot</h1>
+        <p>Welcome to the AI-powered LegalEase assistant!</p>
+    </header>
+
+    <main>
+        <div class="chat-box" id="chatBox">
+            <!-- Chat messages will be dynamically added here -->
+        </div>
+
+        <div class="user-input">
+            <input type="text" id="userInput" placeholder="Type a legal topic...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </main>
+
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('userInput').value.trim().toLowerCase();
+            if (userInput === '') return;
+
+            const chatBox = document.getElementById('chatBox');
+            const userMessage = `<div class="user-message">${userInput}</div>`;
+            const botMessage = generateBotMessage(userInput);
+
+            chatBox.innerHTML += userMessage;
+            setTimeout(() => {
+                chatBox.innerHTML += botMessage;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 500);
+
+            document.getElementById('userInput').value = '';
+        }
+
+        function generateBotMessage(userInput) {
+            const jurisdictionalLaws = getJurisdictionalLaws(userInput);
+
+            return `<div class="bot-message">
+                        <p>Jurisdictional laws related to "${userInput}":</p>
+                        <ul>${jurisdictionalLaws}</ul>
+                    </div>`;
+        }
+
+        function getJurisdictionalLaws(topic) {
+            // Sample data - replace with actual logic to fetch laws from a database or API
+            const lawsInIndia = {
+    'contract': ['Contract Act 1872', 'Sales of Goods Act 1930', 'Specific Relief Act 1963'],
+    'criminal': ['Indian Penal Code', 'Code of Criminal Procedure', 'Juvenile Justice Act'],
+    'property': ['Transfer of Property Act', 'Registration Act', 'Benami Transactions (Prohibition) Act'],
+    'family': ['Hindu Marriage Act', 'Special Marriage Act', 'Protection of Women from Domestic Violence Act'],
+    'company': ['Companies Act 2013', 'Securities and Exchange Board of India (SEBI) Act', 'Competition Act 2002'],
+    'labour': ['Minimum Wages Act', 'Factories Act', 'Employees Provident Fund and Miscellaneous Provisions Act'],
+    'constitution': ['Constitution of India', 'Right to Information Act', 'Goods and Services Tax (GST) Act'],
+    'tax': ['Income Tax Act', 'Goods and Services Tax (Compensation to States) Act', 'Customs Act'],
+    'environment': ['Environment (Protection) Act', 'Water (Prevention and Control of Pollution) Act', 'Wildlife Protection Act'],
+    'consumer': ['Consumer Protection Act', 'Prevention of Food Adulteration Act', 'Legal Metrology Act'],
+    'intellectual_property': ['Copyright Act', 'Patents Act', 'Trademarks Act'],
+    'health': ['Drugs and Cosmetics Act', 'Medical Termination of Pregnancy Act', 'Food Safety and Standards Act'],
+    'education': ['Right of Children to Free and Compulsory Education Act', 'National Council for Teacher Education Act', 'University Grants Commission Act'],
+    'transport': ['Motor Vehicles Act', 'Airports Authority of India Act', 'Railway Act'],
+    'communication': ['Telecom Regulatory Authority of India (TRAI) Act', 'Information Technology Act', 'Press and Registration of Books Act']
+    // Add more categories and laws as needed
+
+            };
+
+            const lawsForTopic = lawsInIndia[topic] || ['No specific laws found.'];
+
+            return lawsForTopic.map(item => `<li>${item}</li>`).join('');
+        }
+    </script>
+</body>
+
+</html>

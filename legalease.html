@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalEase AI</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e6e6e6; 
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+
+        main {
+            padding: 2em;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        button {
+            background-color: #ff9800; /* Orange */
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .bot-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .chat-box {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .user-input {
+            margin-top: 10px;
+        }
+
+        .user-input input {
+            width: 80%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .user-input button {
+            width: 18%;
+            margin-left: 2%;
+        }
+
+        .bot-message {
+            background-color: #f5f5f5;
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>LegalEase AI</h1>
+        <p>Your legal documentation made easy!</p>
+    </header>
+
+    <main>
+        <h2>Revolutionizing Legal Access</h2>
+        <p>Transforming legal services for individuals and small businesses with advanced technologies.</p>
+        <p>Empowering users with plain language translations, educational resources, and collaboration opportunities.</p>
+        <p>Join us in simplifying legal access!</p>
+        <button onclick="navigateToBot()">How Can I Help You</button>
+        <button onclick="navigateToListOfLawyers()">List of Lawyers</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 LegalEase AI. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function navigateToBot() {
+            window.location.href = 'ai_bot.html';
+        }
+
+        function navigateToListOfLawyers() {
+            window.location.href = 'lawyers_list.html';
+        }
+    </script>
+</body>
+
+</html>
+
